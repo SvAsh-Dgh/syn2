@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Import local Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>SYN - Project Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Project Dashboard</h1>
+
+        <!-- Table to display projects -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop to display each project -->
+                <tr th:each="project : ${projects}">
+                    <td th:text="${project.projectName}"></td>
+                    <td th:text="${project.description}"></td>
+                    <td th:text="${project.startDate}"></td>
+                    <td th:text="${project.endDate}"></td>
+                    <td>
+                        <!-- Edit and Delete Buttons -->
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Button to create a new project -->
+        <div class="text-center">
+            <a href="/create-project" class="btn btn-success">Create New Project</a>
+        </div>
+    </div>
+    <!-- Import local Bootstrap JS -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

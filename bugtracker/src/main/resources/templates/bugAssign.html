@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Bug Assignment</title>
+</head>
+<body>
+
+<h1>Assign Bug</h1>
+
+<!-- Form to submit a new Bug Assignment -->
+<form action="/assignBug" method="post">
+    <!-- Select Bug to be Assigned -->
+    <label for="bugId">Select Bug:</label>
+    <select id="bugId" name="bugId">
+        <!-- Options should be populated from database -->
+        <option value="1">Bug 1</option>
+        <option value="2">Bug 2</option>
+        <!-- ... -->
+    </select>
+    <br>
+
+    <!-- Select User to Assign Bug -->
+    <label for="userId">Assign to User:</label>
+    <select id="userId" name="userId">
+        <!-- Options should be populated from database -->
+        <option value="1">User 1</option>
+        <option value="2">User 2</option>
+        <!-- ... -->
+    </select>
+    <br>
+
+    <!-- Date of Assignment (automatically populated ideally) -->
+    <label for="assignedOn">Date Assigned:</label>
+    <input type="datetime-local" id="assignedOn" name="assignedOn">
+    <br>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Assign Bug">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Bug Reporting Form</title>
+    <!-- Add Bootstrap CSS -->
+</head>
+<body>
+
+    <h1>Bug Reporting Form</h1>
+
+    <!-- Form to submit a new bug -->
+    <form th:action="@{/bug/report}" method="post">
+        <!-- Bug title -->
+        <div class="form-group">
+            <label for="title">Bug Title:</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+
+        <!-- Bug description -->
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+
+        <!-- Bug severity dropdown -->
+        <div class="form-group">
+            <label for="priority">Severity:</label>
+            <select class="form-control" id="priority" name="priority">
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH">High</option>
+            </select>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- Back button to go back to the dashboard -->
+    <a href="/dashboard" class="btn btn-secondary">Back</a>
+
+</body>
+</html>

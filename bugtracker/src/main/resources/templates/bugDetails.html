@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Import local Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>SYN - Bug Details</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Bug Details</h1>
+        
+        <!-- Display Bug Information -->
+        <div>
+            <!-- Bug title -->
+            <h3 th:text="${bug.title}"></h3>
+
+            <!-- Bug status and priority -->
+            <p>Status: <span th:text="${bug.status}"></span></p>
+            <p>Priority: <span th:text="${bug.priority}"></span></p>
+            
+            <!-- Bug description -->
+            <div>
+                <h4>Description:</h4>
+                <p th:text="${bug.description}"></p>
+            </div>
+
+            <!-- Display the user who reported the bug -->
+            <div>
+                <h4>Reported by:</h4>
+                <p th:text="${bug.reportedBy.username}"></p>
+            </div>
+        </div>
+        
+        <!-- Display Comments -->
+        <div>
+            <h2>Comments</h2>
+            <!-- Loop to display each comment -->
+            <div th:each="comment : ${comments}">
+                <div>
+                    <!-- Display comment content -->
+                    <p th:text="${comment.content}"></p>
+                    <!-- Display the user who commented -->
+                    <small th:text="${comment.user.username}"></small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add comment form -->
+        <form action="/add-comment" method="post">
+            <div class="form-group">
+                <label for="comment">Add Comment</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+    </div>
+    <!-- Import local Bootstrap JS -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

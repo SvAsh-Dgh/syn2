@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>SYN - User Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Main container -->
+<div class="container mt-5">
+    <!-- User Info -->
+    <div>
+        <h2>User Profile</h2>
+        <p><strong>Name: </strong><span th:text="${user.username}"></span></p> <!-- Replace user.username with your actual username variable -->
+        <p><strong>Email: </strong><span th:text="${user.email}"></span></p> <!-- Replace user.email with your actual email variable -->
+    </div>
+
+    <!-- User Bugs Table -->
+    <h3>Reported Bugs</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Date Reported</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through bugs reported by the user -->
+            <tr th:each="bug : ${user.reportedBugs}">  <!-- Replace user.reportedBugs with your actual bugs list variable -->
+                <td><a th:href="@{/bug/${bug.bugId}}" th:text="${bug.title}"></a></td> <!-- Replace bug.title and bug.bugId with your actual variables -->
+                <td th:text="${bug.priority}"></td>  <!-- Replace bug.priority with your actual priority variable -->
+                <td th:text="${bug.status}"></td>     <!-- Replace bug.status with your actual status variable -->
+                <td th:text="${#dates.format(bug.creationDate, 'yyyy-MM-dd')}"></td> <!-- Replace bug.creationDate with your actual date variable -->
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Back button -->
+    <a href="/dashboard" class="btn btn-primary">Back to Dashboard</a>
+</div>
+
+</body>
+</html>

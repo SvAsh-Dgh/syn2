@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Import local Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>SYN - Bug Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Bug Dashboard</h1>
+        
+        <!-- Table to display bugs -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Reported By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop to display each bug -->
+                <tr th:each="bug : ${bugs}">
+                    <td th:text="${bug.title}"></td>
+                    <td th:text="${bug.status}"></td>
+                    <td th:text="${bug.priority}"></td>
+                    <td th:text="${bug.reportedBy.username}"></td>
+                    <td>
+                        <!-- View, Edit and Delete Buttons -->
+                        <a href="#" class="btn btn-info">View</a>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Button to report a new bug -->
+        <div class="text-center">
+            <a href="/report-bug" class="btn btn-success">Report New Bug</a>
+        </div>
+    </div>
+
+    <!-- Import local Bootstrap JS -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

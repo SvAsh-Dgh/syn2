@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>SYN - System Yield Nexus</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Syn</h1>
+
+        <!-- If user is logged in -->
+        <div>
+            <div class="text-center mt-4">
+                <a href="/userDash.html" class="btn btn-primary">Go to Dashboard</a>
+                <a href="/landing.html" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+
+        <!-- If user is not logged in -->
+        <div>
+            <div class="row">
+
+                <!-- Login Form -->
+                <div class="col">
+                    <h2>Login</h2>
+                    <form th:action="@{/login}" th:object="${loginDto}" method="post">
+                        <!-- th:action specifies form submission endpoint -->
+                        <!-- th:object binds form to loginDto object -->
+                        
+                        <div class="form-group">
+                            <label for="loginUsername">Username</label>
+                            <input type="text" class="form-control" th:field="*{username}" id="loginUsername" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" class="form-control" th:field="*{password}" id="loginPassword" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="col">
+                    <h2>Register</h2>
+                    <form th:action="@{/register}" th:object="${user}" method="post">
+                        <!-- th:action specifies form submission endpoint -->
+                        <!-- th:object binds form to user object -->
+                        
+                        <div class="form-group">
+                            <label for="registerUsername">Username</label>
+                            <input type="text" class="form-control" th:field="*{username}" id="registerUsername" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerEmail">Email</label>
+                            <input type="email" class="form-control" th:field="*{email}" id="registerEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" class="form-control" th:field="*{password}" id="registerPassword" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" th:field="*{confirmPassword}" id="confirmPassword" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
